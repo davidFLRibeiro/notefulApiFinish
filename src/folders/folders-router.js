@@ -32,10 +32,11 @@ folderRouter
     newFolder.name = name;
     FoldersService.insertFolder(req.app.get('db'), newFolder)
       .then(folder => {
+        console.log('folder name =', folder);
         res
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${folder.id}`))
-          .json(serializenotes(folder));
+          .json(serializeFolder(folder));
       })
       .catch(next);
   });
