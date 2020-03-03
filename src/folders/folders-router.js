@@ -21,6 +21,11 @@ folderRouter
   })
   .post(jsonParser, (req, res, next) => {
     const { name } = req.body;
+    if (name.length === 0) {
+      return res.status(400).json({
+        error: { message: `folder name can not be empty` }
+      });
+    }
     const newFolder = { name };
 
     for (const [key, value] of Object.entries(newFolder))

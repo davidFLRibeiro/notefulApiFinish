@@ -61,6 +61,8 @@ describe('Folders Endpoints', function() {
           .expect(404, { error: { message: `folder doesnt exist` } });
       });
     });
+
+    //stay here
     context('Given there are folders in the database', () => {
       const testNotes = makeNotesArray();
       const testFolders = makeFoldersArray();

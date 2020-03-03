@@ -27,6 +27,11 @@ notesRouter
 
   .post(jsonParser, (req, res, next) => {
     const { name, modified, folder_id, content } = req.body;
+    if (name.length === 0 || content.length === 0) {
+      return res.status(400).json({
+        error: { message: `note name or content can not be empty` }
+      });
+    }
     const newNote = { name, modified, folder_id, content };
 
     for (const [key, value] of Object.entries(newNote))
